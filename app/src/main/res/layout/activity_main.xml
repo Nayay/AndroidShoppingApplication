@@ -29,16 +29,16 @@
     <Button
         android:id="@+id/btnJoin"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="43dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
 
+        android:background="@drawable/input_design"
         android:onClick="onRegisterClick"
         android:text="Join Now"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="@android:color/white"
-        android:background="@drawable/input_design"
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/btnExistingUser"
         app:layout_constraintEnd_toEndOf="parent"

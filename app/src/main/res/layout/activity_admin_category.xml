@@ -4,79 +4,75 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
-    <TextView
-        android:id="@+id/textView2"
+    tools:context=".AdminAddProductActivity">
+
+
+    <ImageView
+        android:id="@+id/imgPImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="8dp"
-        android:text="Register"
-        android:textSize="35dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/select_product_image" />
 
     <EditText
-        android:id="@+id/edtUserL"
+        android:id="@+id/edtPName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="Enter Email"
-        android:inputType="textEmailAddress"
+        android:hint="Enter Product Name"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imgPImage" />
 
     <EditText
-        android:id="@+id/edtPasswordL"
+        android:id="@+id/edtPPrice"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-
-        android:hint="Enter Password"
-        android:inputType="textPassword"
+        android:hint="Enter Product Price"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtUserL" />
+        app:layout_constraintTop_toBottomOf="@+id/edtPName" />
 
     <EditText
-        android:id="@+id/edtPhoneNo"
+        android:id="@+id/edtPDesc"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="Enter Phone Number"
-        android:inputType="textPassword|phone"
+        android:hint="Enter Product Description"
+        android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtPasswordL" />
+        app:layout_constraintTop_toBottomOf="@+id/edtPPrice" />
 
     <Button
-        android:id="@+id/btnRegister"
-        android:layout_width="395dp"
+        android:id="@+id/btnAddProduct"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/button_primary"
-        android:onClick="onClickRegisterUser"
-        android:text="Register"
-        android:textColor="@android:color/white"
-        android:textSize="20dp"
+        android:text=" Add Product "
+        android:textColor="@color/common_google_signin_btn_text_dark_pressed"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtPhoneNo" />
+        app:layout_constraintTop_toBottomOf="@+id/edtPDesc" />
 
 </android.support.constraint.ConstraintLayout>

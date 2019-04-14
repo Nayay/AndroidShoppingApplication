@@ -11,7 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".AdminCategoryActivity"></activity>
+        <activity android:name=".AdminAddProductActivity" />
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
         <activity
             android:name=".SplashActivity"

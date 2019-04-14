@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+tools:context=".AdminCategoryActivity">
+
+
+<TextView
+    android:id="@+id/textView4"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Add New Product"
+    android:textAlignment="center"
+    android:textSize="24dp" />
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/imgMobile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:srcCompat="@drawable/mobiles" />
+
+    <ImageView
+        android:id="@+id/imgLaptop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:contextClickable="true"
+        app:srcCompat="@drawable/laptops" />
+
+    <ImageView
+        android:id="@+id/imgWatch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:contextClickable="true"
+        app:srcCompat="@drawable/watches" />
+
+    <ImageView
+        android:id="@+id/imgHeadphone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:contextClickable="true"
+        app:srcCompat="@drawable/headphoness" />
+</LinearLayout>
+</LinearLayout>

@@ -30,13 +30,14 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        edtEmail = findViewById(R.id.edtUser);
-        edtPassword = findViewById(R.id.edtPassword);
+        edtEmail = findViewById(R.id.edtUserL);
+        edtPassword = findViewById(R.id.edtPasswordL);
         edtPhone = findViewById(R.id.edtPhoneNo);
         loadingBar = new ProgressDialog(this);
     }
     public void onClickRegisterUser(View view){
         String email = edtEmail.getText().toString();
+        email = encodeUserEmail(email);
         String password = edtPassword.getText().toString();
         String phone = edtPhone.getText().toString();
         if(email.isEmpty()||password.isEmpty()||phone.isEmpty()){
@@ -47,12 +48,13 @@ public class RegisterActivity extends AppCompatActivity {
             loadingBar.setMessage("Please wait, while we are checking the credentials.");
             loadingBar.setCanceledOnTouchOutside(false);
             loadingBar.show();
-            validateUserAccount(email, phone,password);
+            validateUserAccount(email,phone,password);
 
         }
 
 
     }
+
     private void validateUserAccount(final String email, final String phone, final String password){
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
@@ -63,7 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
                     HashMap<String,Object> userDataMap = new HashMap<>();
                     userDataMap.put("email",email);
                     userDataMap.put("password",password);
-                    userDataMap.put("password",phone);
+                    userDataMap.put("phone",phone);
                     RootRef.child("Users").child(email).updateChildren(userDataMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
@@ -83,8 +85,8 @@ public class RegisterActivity extends AppCompatActivity {
                 else{
                     Toast.makeText(RegisterActivity.this,"This "+email+" user already exist",Toast.LENGTH_LONG).show();
                     loadingBar.dismiss();
-                    Intent intent = new Intent(RegisterActivity.this,MainActivity.class);
-                    startActivity(intent);
+                       Intent intent = new Intent(RegisterActivity.this,MainActivity.class);
+                      startActivity(intent);
                 }
             }
 
@@ -94,5 +96,8 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+    }
+    static String encodeUserEmail(String userEmail) {
+        return userEmail.replace(".", ",");
     }
 }
