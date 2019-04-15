@@ -6,7 +6,9 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.adb.group12w2019mad3125.Model.Users;
@@ -19,18 +21,59 @@ import com.google.firebase.database.ValueEventListener;
 public class LoginActivity extends AppCompatActivity {
     private EditText edtEmail;
     private EditText edtPassword;
+    private TextView adminLink;
+    private TextView userLink;
+    private Button btnLogin;
     private ProgressDialog loadingBar;
     private String parentDBName ="Users";
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         edtEmail = findViewById(R.id.edtUserL);
         edtPassword = findViewById(R.id.edtPasswordL);
+        adminLink = findViewById(R.id.txtAdmin);
+        userLink = findViewById(R.id.txtUser);
+        btnLogin = findViewById(R.id.btnLogin);
         loadingBar = new ProgressDialog(this);
+        userLink.setVisibility(View.INVISIBLE);
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                onClickLoginUser();
+            }
+        });
+
+        adminLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                btnLogin.setText("Login Admin");
+                adminLink.setVisibility(View.INVISIBLE);
+                userLink.setVisibility(View.VISIBLE);
+                parentDBName = "Admins";
+            }
+        });
+
+        userLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                btnLogin.setText("Login");
+                adminLink.setVisibility(View.VISIBLE);
+                userLink.setVisibility(View.INVISIBLE);
+                parentDBName = "Users";
+            }
+        });
     }
 
-    public void onClickLoginUser(View view) {
+    public void onClickLoginUser() {
         String email = edtEmail.getText().toString();
         email = encodeUserEmail(email);
         String password = edtPassword.getText().toString();
@@ -48,30 +91,66 @@ public class LoginActivity extends AppCompatActivity {
 
     }
     private void checkLogin(final String email, final String password){
+
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
+
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.child(parentDBName).child(email).exists()){
-                    Users userData = dataSnapshot.child(parentDBName).child(email).getValue(Users.class);
-                    if(userData.getEmail().equals(email)){
-                        if(userData.getPassword().equals(password)){
-                            Toast.makeText(LoginActivity.this,"Logged in successfully",Toast.LENGTH_LONG).show();
-                            loadingBar.dismiss();
-                            Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
-                            startActivity(intent);
-                        }
-                        else {
-                            loadingBar.dismiss();
-                            Toast.makeText(LoginActivity.this,"Invalid password",Toast.LENGTH_LONG).show();
-                        }
-                    }
 
-                }else{
-                    Toast.makeText(LoginActivity.this,"User does not exit please Register.",Toast.LENGTH_LONG).show();
-                    loadingBar.dismiss();
+                if (parentDBName.equals("Users")) {
+                    if (dataSnapshot.child(parentDBName).child(email).exists()) {
+                        Users userData = dataSnapshot.child(parentDBName).child(email).getValue(Users.class);
+                        if (userData.getEmail().equals(email)) {
+                            if (userData.getPassword().equals(password)) {
+                                Toast.makeText(LoginActivity.this, "Logged in successfully", Toast.LENGTH_LONG).show();
+                                loadingBar.dismiss();
+                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                                startActivity(intent);
+                            } else {
+                                loadingBar.dismiss();
+                                Toast.makeText(LoginActivity.this, "Invalid password", Toast.LENGTH_LONG).show();
+                            }
+
+                        }
+
+                    } else {
+                        Toast.makeText(LoginActivity.this, "User does not exit please Register.", Toast.LENGTH_LONG).show();
+                        loadingBar.dismiss();
+                    }
                 }
+                if (parentDBName.equals("Admins")) {
+                    if (dataSnapshot.child(parentDBName).child(email).exists()) {
+                        Intent intent = new Intent(LoginActivity.this, AdminAddProductActivity.class);
+                        startActivity(intent);
+                    }
+                }
+//                    if (dataSnapshot.child(parentDBName).child(email).exists()) {
+
+
+//                if (parentDBName.equals("Admins")) {
+//                    if (dataSnapshot.child(parentDBName).child(email).exists()) {
+//
+//                        Users userData = dataSnapshot.child(parentDBName).child(email).getValue(Users.class);
+//                        if (userData.getEmail().equals(email)) {
+//                            if (userData.getPassword().equals(password)) {
+//                                Toast.makeText(LoginActivity.this, "Logged in successfully", Toast.LENGTH_LONG).show();
+//                                loadingBar.dismiss();
+//                                Intent intent = new Intent(LoginActivity.this, AdminAddProductActivity.class);
+//                                startActivity(intent);
+//                            } else {
+//                                loadingBar.dismiss();
+//                                Toast.makeText(LoginActivity.this, "Invalid password", Toast.LENGTH_LONG).show();
+//                            }
+//
+//                        }
+//
+//                    } else {
+//                        Toast.makeText(LoginActivity.this, "Admin does not exit please Register.", Toast.LENGTH_LONG).show();
+//                        loadingBar.dismiss();
+//                    }
+//                }
             }
 
             @Override
@@ -81,14 +160,6 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
-
-    public  void onClickAdmin(View view){
-    Intent intent = new Intent(LoginActivity.this,AdminAddProductActivity.class);
-    startActivity(intent);
-
-    }
-
-
     static String encodeUserEmail(String userEmail) {
         return userEmail.replace(".", ",");
     }
