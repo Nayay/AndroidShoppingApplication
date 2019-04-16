@@ -88,7 +88,7 @@
 
 
     <EditText
-        android:id="@+id/settings_phone_number"
+        android:id="@+id/checkoutPhone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtEmail"
@@ -98,10 +98,10 @@
         />
 
     <EditText
-        android:id="@+id/settings_full_name"
+        android:id="@+id/checkoutName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/settings_phone_number"
+        android:layout_below="@+id/checkoutPhone"
         android:hint="Full Name..."
         android:layout_margin="15dp"
         android:padding="10dp"
@@ -111,7 +111,7 @@
         android:id="@+id/settings_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/settings_full_name"
+        android:layout_below="@+id/checkoutName"
         android:hint="Address..."
         android:layout_margin="15dp"
         android:padding="10dp"

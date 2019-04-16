@@ -25,7 +25,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
-import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.util.HashMap;
@@ -50,8 +49,8 @@ public class SettingsActivity extends AppCompatActivity {
         storageProfilePrictureRef = FirebaseStorage.getInstance().getReference().child("Profile pictures");
         txtEmail = findViewById(R.id.txtEmail);
         profileImageView = findViewById(R.id.settings_profile_image);
-        fullNameEditText =  findViewById(R.id.settings_full_name);
-        userPhoneEditText =  findViewById(R.id.settings_phone_number);
+        fullNameEditText =  findViewById(R.id.checkoutName);
+        userPhoneEditText =  findViewById(R.id.checkoutPhone);
         addressEditText =  findViewById(R.id.settings_address);
         profileChangeTextBtn =  findViewById(R.id.profile_image_change_btn);
         closeTextBtn = findViewById(R.id.close_settings_btn);

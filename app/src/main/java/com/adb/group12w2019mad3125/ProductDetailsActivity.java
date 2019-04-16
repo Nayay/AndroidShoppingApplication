@@ -100,7 +100,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         cartMap.put("price",productPrice.getText().toString());
         cartMap.put("date",saveCurrentDate);
         cartMap.put("time",saveCurrentTime);
-        cartMap.put("quantity",minteger);
+        cartMap.put("quantity",minteger+"");
         cartMap.put("discount","");
         cartListRef.child("User View").child(Prevalent.currentOnlineUser.getEmail())
                 .child("Products").child(productID).updateChildren(cartMap)

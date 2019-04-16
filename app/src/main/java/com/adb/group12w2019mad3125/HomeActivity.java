@@ -68,7 +68,7 @@ public class HomeActivity extends AppCompatActivity
         View headerView = navigationView.getHeaderView(0);
         TextView userTextView = headerView.findViewById(R.id.idProfileEmail);
 
-        userTextView.setText(Prevalent.currentOnlineUser.getEmail());
+        //userTextView.setText(Prevalent.currentOnlineUser.getEmail());
 
         recyclerView = findViewById(R.id.rc_Menu);
         recyclerView.setHasFixedSize(true);

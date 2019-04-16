@@ -133,6 +133,7 @@ public class LoginActivity extends AppCompatActivity {
                                 else {
                                     mEditor.clear().apply();
                                 }
+
                                 Prevalent.currentOnlineUser = userData;
 
                                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
