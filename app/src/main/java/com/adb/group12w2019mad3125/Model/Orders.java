@@ -2,30 +2,25 @@ package com.adb.group12w2019mad3125.Model;
 
 public class Orders {
 
-    private String username,phone,address,totalAmount,cardName;
+    private String name,phone,address,totalAmount,cardNumber;
 
-    public Orders(String pname, String username, String phone, String address, String totalAmount, String cardName) {
-
-        this.username = username;
+    public Orders(String name, String phone, String address, String totalAmount, String cardNumber) {
+        this.name = name;
         this.phone = phone;
         this.address = address;
         this.totalAmount = totalAmount;
-        this.cardName = cardName;
+        this.cardNumber = cardNumber;
     }
 
     public Orders() {
     }
 
-
-
-
-
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPhone() {
@@ -52,11 +47,11 @@ public class Orders {
         this.totalAmount = totalAmount;
     }
 
-    public String getCardName() {
-        return cardName;
+    public String getCardNumber() {
+        return cardNumber;
     }
 
-    public void setCardName(String cardName) {
-        this.cardName = cardName;
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
     }
 }

@@ -1,6 +1,5 @@
 package com.adb.group12w2019mad3125;
 
-import android.os.RecoverySystem;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,15 +40,22 @@ public class OrdersActivity extends AppCompatActivity   {
 
         FirebaseRecyclerOptions<Orders> options = new FirebaseRecyclerOptions.Builder<Orders>()
                 .setQuery(orderRef,Orders.class).build();
+
+//        FirebaseRecyclerOptions<Cart> options = new FirebaseRecyclerOptions.Builder<Cart>()
+//                .setQuery(cartListRef.child("User View")
+//                        .child(Prevalent.currentOnlineUser.getEmail())
+//                        .child("Products"), Cart.class).build();
         FirebaseRecyclerAdapter<Orders,orderViewHolder> adapter = new FirebaseRecyclerAdapter<Orders, orderViewHolder>(options) {
 
             @Override
-            protected void onBindViewHolder(@NonNull orderViewHolder holder, int position, @NonNull Orders model) {
-            holder.userName.setText("Name: "+model.getUsername());
-            holder.userName.setText("Phone Number: "+model.getPhone());
-            holder.userName.setText("Total Price: "+model.getTotalAmount()+"$");
-            holder.userName.setText("Address: "+model.getAddress());
-            holder.userName.setText("card Name: "+model.getCardName());
+            protected void onBindViewHolder(@NonNull orderViewHolder holder, int position,Orders model) {
+
+
+            holder.userName.setText("User Name: "+ model.getName());
+            holder.phone.setText("Phone Number: "+model.getPhone());
+            holder.price.setText("Total Price: "+model.getTotalAmount()+"$");
+            holder.address.setText("Address: "+model.getAddress());
+            holder.cardName.setText("card Name: "+model.getCardNumber());
             }
             @NonNull
             @Override
