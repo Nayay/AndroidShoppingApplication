@@ -15,9 +15,9 @@ public class CartViewHolder  extends RecyclerView.ViewHolder implements View.OnC
 
     public CartViewHolder(@NonNull View itemView) {
         super(itemView);
-        txtPName = itemView.findViewById(R.id.cartName);
+        txtPName = itemView.findViewById(R.id.userNameOrder);
         txtPPrice = itemView.findViewById(R.id.cartPrice);
-        txtPQuantity = itemView.findViewById(R.id.cartQunatity);
+        txtPQuantity = itemView.findViewById(R.id.phoneOrder);
     }
 
     @Override

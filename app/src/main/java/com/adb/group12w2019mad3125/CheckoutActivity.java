@@ -1,5 +1,6 @@
 package com.adb.group12w2019mad3125;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -105,6 +106,10 @@ public class CheckoutActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()){
                                 Toast.makeText(CheckoutActivity.this,"Your final order has been paced successfully",Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(CheckoutActivity.this,OrdersActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
+                                finish();
                             }
                         }
                     });
