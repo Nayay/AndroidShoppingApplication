@@ -14,9 +14,9 @@ public class AdminAddProductActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_add_product);
-        imgWatch = findViewById(R.id.imgWatch);
-        imgLaptop = findViewById(R.id.imgLaptop);
-        imgHeadphone = findViewById(R.id.imgHeadphone);
+//        imgWatch = findViewById(R.id.imgWatch);
+//        imgLaptop = findViewById(R.id.imgLaptop);
+//        imgHeadphone = findViewById(R.id.imgHeadphone);
         imgMobile = findViewById(R.id.imgMobile);
 
 
@@ -29,29 +29,29 @@ public class AdminAddProductActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        imgHeadphone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AdminAddProductActivity.this,AdminCategoryActivity.class);
-                intent.putExtra("category","Headphone");
-                startActivity(intent);
-            }
-        });
-        imgLaptop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AdminAddProductActivity.this,AdminCategoryActivity.class);
-                intent.putExtra("category","Laptop");
-                startActivity(intent);
-            }
-        });
-        imgWatch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AdminAddProductActivity.this,AdminCategoryActivity.class);
-                intent.putExtra("category","Watch");
-                startActivity(intent);
-            }
-        });
+//        imgHeadphone.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(AdminAddProductActivity.this,AdminCategoryActivity.class);
+//                intent.putExtra("category","Headphone");
+//                startActivity(intent);
+//            }
+//        });
+//        imgLaptop.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(AdminAddProductActivity.this,AdminCategoryActivity.class);
+//                intent.putExtra("category","Laptop");
+//                startActivity(intent);
+//            }
+//        });
+//        imgWatch.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(AdminAddProductActivity.this,AdminCategoryActivity.class);
+//                intent.putExtra("category","Watch");
+//                startActivity(intent);
+//            }
+//        });
     }
 }

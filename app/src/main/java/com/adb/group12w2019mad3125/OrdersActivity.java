@@ -17,6 +17,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+
 public class OrdersActivity extends AppCompatActivity   {
 
     private RecyclerView orderView;
@@ -27,13 +28,13 @@ public class OrdersActivity extends AppCompatActivity   {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_orders);
-        orderRef = FirebaseDatabase.getInstance().getReference().child("Orders");
 
+
+        orderRef = FirebaseDatabase.getInstance().getReference().child("Orders");
         orderView = findViewById(R.id.rcOrderView);
         orderView.setHasFixedSize(true);
         orderView.setLayoutManager(new LinearLayoutManager(this));
     }
-
     @Override
     protected void onStart() {
         super.onStart();

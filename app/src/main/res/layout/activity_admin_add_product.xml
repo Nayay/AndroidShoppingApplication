@@ -9,13 +9,15 @@ android:orientation="vertical"
 tools:context=".AdminCategoryActivity">
 
 
-<TextView
-    android:id="@+id/textView4"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Add New Product"
-    android:textAlignment="center"
-    android:textSize="24dp" />
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add New Product"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24dp"
+        android:textStyle="bold" />
 
 <LinearLayout
     android:layout_width="match_parent"
@@ -29,28 +31,5 @@ tools:context=".AdminCategoryActivity">
 
         app:srcCompat="@drawable/mobiles" />
 
-    <ImageView
-        android:id="@+id/imgLaptop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:contextClickable="true"
-        app:srcCompat="@drawable/laptops" />
-
-    <ImageView
-        android:id="@+id/imgWatch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:contextClickable="true"
-        app:srcCompat="@drawable/watches" />
-
-    <ImageView
-        android:id="@+id/imgHeadphone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:contextClickable="true"
-        app:srcCompat="@drawable/headphoness" />
 </LinearLayout>
 </LinearLayout>
