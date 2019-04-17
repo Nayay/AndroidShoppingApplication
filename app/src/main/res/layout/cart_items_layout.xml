@@ -8,34 +8,48 @@
         android:layout_marginBottom="10dp"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
-
+        android:padding="5dp"
         app:cardElevation="15dp">
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary">
+        android:layout_height="wrap_content">
 
-            <TextView
+        <ImageView
+            android:id="@+id/imgProductCart"
+
+            app:srcCompat="@drawable/ic_menu_camera"
+            android:layout_width="120dp"
+            android:layout_height="210dp"
+            android:layout_marginTop="2dp"
+             />
+
+
+        <TextView
                 android:id="@+id/userNameOrder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Product Name"
                 android:textAlignment="center"
                 android:textSize="20dp"
-                android:textStyle="bold"
-                android:textColor="@color/colorText"
+                android:layout_toRightOf="@+id/imgProductCart"
+                android:textStyle="bold"/>
+                <!--android:textColor="@color/colorText"-->
 
                 />
+
+
 
             <TextView
                 android:id="@+id/phoneOrder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/imgProductCart"
                 android:layout_below="@+id/userNameOrder"
                 android:text="Product Quantity"
+                android:layout_marginTop="100dp"
                 android:textAlignment="center"
                 android:textSize="18dp"
-                android:textColor="@color/colorText"
+
                 />
 
             <TextView
@@ -43,12 +57,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/phoneOrder"
+                android:layout_toRightOf="@+id/imgProductCart"
                 android:text="Product Price"
                 android:layout_marginTop="2dp"
                 android:textAlignment="center"
                 android:textSize="16dp"
-                android:textColor="@color/colorText"
+
                 />
+
+
 
     </RelativeLayout>
 

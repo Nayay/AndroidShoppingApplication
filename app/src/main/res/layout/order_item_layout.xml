@@ -17,7 +17,7 @@
             android:id="@+id/userNameOrder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Product Name"
+            android:text="User Name"
             android:textAlignment="center"
             android:textColor="@color/colorText"
             android:textSize="20dp"
@@ -30,7 +30,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/userNameOrder"
-            android:text="Product Quantity"
+            android:text="Phone Number"
+            android:textAlignment="center"
+            android:textSize="18dp"
+            android:textColor="@color/colorText"
+            />
+
+        <TextView
+            android:id="@+id/productsOrders"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/phoneOrder"
+            android:text="Products"
+            android:textAlignment="center"
+            android:textColor="@color/colorText"
+            android:textSize="18dp" />
+        <TextView
+            android:id="@+id/PriceQuantityOrder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/productsOrders"
+            android:text="Quantity"
             android:textAlignment="center"
             android:textSize="18dp"
             android:textColor="@color/colorText"
@@ -40,7 +60,7 @@
             android:id="@+id/totalPriceOrder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/phoneOrder"
+            android:layout_below="@+id/PriceQuantityOrder"
             android:layout_marginTop="2dp"
             android:text="Total Price"
             android:textAlignment="center"
@@ -62,17 +82,18 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/AddressTitle"
             android:layout_marginTop="2dp"
-            android:text="Address"
+            android:text="Address Value"
             android:textAlignment="center"
             android:textColor="@color/colorText"
             android:textSize="16dp" />
+
         <TextView
             android:id="@+id/CardNameOrder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/AddressOrder"
             android:layout_marginTop="2dp"
-            android:text="Address"
+            android:text="Card"
             android:textAlignment="center"
             android:textColor="@color/colorText"
             android:textSize="16dp" />

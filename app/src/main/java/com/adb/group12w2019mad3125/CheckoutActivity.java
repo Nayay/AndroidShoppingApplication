@@ -1,14 +1,19 @@
 package com.adb.group12w2019mad3125;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,25 +34,64 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Random;
 
-public class CheckoutActivity extends AppCompatActivity {
-    private EditText fullNameEditText, userPhoneEditText, addressEditText;
+public class CheckoutActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+    private EditText fullNameEditText, userPhoneEditText, addressEditText,txtCvv,txtCardNumber;
     private TextView txtEmail;
     private Button btnCheckout;
+    EditText date;
+    DatePickerDialog datePickerDialog;
+    String[] cardName={"Visa","Master"};
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout);
+        Toast.makeText(this,getIntent().getStringExtra("products"),Toast.LENGTH_SHORT).show();
+        // initiate the date picker and a button
+        date = findViewById(R.id.txtCardDate);
+        // perform click event on edit text
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // calender class's instance and get current date , month and year from calender
+                final Calendar c = Calendar.getInstance();
+                int mYear = c.get(Calendar.YEAR); // current year
+                int mMonth = c.get(Calendar.MONTH); // current month
+                int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
+                // date picker dialog
+                datePickerDialog = new DatePickerDialog(CheckoutActivity.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+                                // set day of month , month and year value in the edit text
+                                date.setText(dayOfMonth + "/"+ (monthOfYear + 1) + "/" + year);
+
+                            }
+                        }, mYear, mMonth, mDay);
+                datePickerDialog.show();
+            }
+        });
+        //Getting the instance of Spinner and applying OnItemSelectedListener on it
+        Spinner spin = (Spinner) findViewById(R.id.CradType);
+        spin.setOnItemSelectedListener(this);
+        //Creating the ArrayAdapter instance having the bank name list
+        ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,cardName);
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //Setting the ArrayAdapter data on the Spinner
+        spin.setAdapter(aa);
 
         txtEmail = findViewById(R.id.txtCheckoutEmail);
         fullNameEditText =  findViewById(R.id.checkoutName);
         userPhoneEditText =  findViewById(R.id.checkoutPhone);
         addressEditText =  findViewById(R.id.checkoutAddress);
         btnCheckout = findViewById(R.id.btnCheckoutP);
+        txtCvv = findViewById(R.id.txtCvv);
+        txtCardNumber = findViewById(R.id.txtCardNumber);
         txtEmail.setText(Prevalent.currentOnlineUser.getEmail().replace(",","."));
         userInfoDisplay( fullNameEditText, userPhoneEditText, addressEditText);
-        Toast.makeText(CheckoutActivity.this,getIntent().getStringExtra("totalPrice"),Toast.LENGTH_SHORT).show();
+        Toast.makeText(CheckoutActivity.this,getIntent().getStringExtra("price"),Toast.LENGTH_SHORT).show();
 
         btnCheckout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,7 +99,6 @@ public class CheckoutActivity extends AppCompatActivity {
             checkOrderDetails();
             }
         });
-       //
 
 
     }
@@ -78,8 +121,7 @@ public class CheckoutActivity extends AppCompatActivity {
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
         saveCurrentTime = currentTime.format(calendar.getTime());
         DatabaseReference orderRef = FirebaseDatabase.getInstance().getReference().child("Orders");
-
-               // .child(Prevalent.currentOnlineUser.getEmail());
+        // .child(Prevalent.currentOnlineUser.getEmail());
         HashMap<String,Object> orderMap = new HashMap<>();
         orderMap.put("totalAmount",getIntent().getStringExtra("totalPrice"));
         orderMap.put("name",fullNameEditText.getText().toString());
@@ -89,9 +131,12 @@ public class CheckoutActivity extends AppCompatActivity {
         orderMap.put("time",saveCurrentTime);
         orderMap.put("state","shipped");
         orderMap.put("card","Visa");
-        orderMap.put("cardNumber","378734493671000"+"");
-        orderMap.put("cvv","123");
-        orderMap.put("expiryDate","10/07/2019");
+        orderMap.put("cardNumber",txtCardNumber.getText().toString());
+        orderMap.put("cvv",txtCvv.getText().toString());
+        orderMap.put("expiryDate",date.getText().toString());
+        orderMap.put("products",getIntent().getStringExtra("products"));
+        orderMap.put("price",getIntent().getStringExtra("price"));
+
 
 //        orderRef.child("User View").child(Prevalent.currentOnlineUser.getEmail())
 //                .child("Orders").child(currentTime.toString()).updateChildren(orderMap)
@@ -183,5 +228,15 @@ public class CheckoutActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+       // Toast.makeText(getApplicationContext(), cardName[position], Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

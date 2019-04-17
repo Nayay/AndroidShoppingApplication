@@ -1,5 +1,7 @@
 package com.adb.group12w2019mad3125;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -25,36 +27,78 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 public class CartActivity extends AppCompatActivity {
+    final Context context = this;
     private static final String TAG ="Cart List Details" ;
     private RecyclerView rcCartView;
     private RecyclerView.LayoutManager rcCartLayoutManager;
     private TextView txtPrice;
     private Button btnCheckout;
-    private  Double totalPrice = 0.0;
+    private Double totalPrice = 0.0;
+    private String products = "";
+    private String price = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
-
         rcCartView = findViewById(R.id.rcCart);
         rcCartView.setHasFixedSize(true);
         rcCartLayoutManager =new LinearLayoutManager(this);
         rcCartView.setLayoutManager(rcCartLayoutManager);
-
         btnCheckout = findViewById(R.id.btnCheckoutP);
         txtPrice = findViewById(R.id.txtPrice);
+
+        txtPrice.setText("Total Price = "+totalPrice+"$");
+
+        Toast.makeText(this,totalPrice+"",Toast.LENGTH_SHORT).show();
+//        if(totalPrice == 0.0){
+//            // custom dialog
+//            final Dialog dialog = new Dialog(context);
+//            dialog.setContentView(R.layout.cutom_alert);
+//             Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
+//            // if button is clicked, close the custom dialog
+//            dialogButton.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    dialog.dismiss();
+//                    Intent intent = new Intent(CartActivity.this,HomeActivity.class);
+//                    startActivity(intent);
+//                }
+//            });
+//            dialog.show();
+//        }
 
         btnCheckout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 txtPrice.setText("Total Price = "+totalPrice+"$");
-                Intent intent = new Intent(CartActivity.this, CheckoutActivity.class);
-                intent.putExtra("totalPrice",totalPrice+"");
-                startActivity(intent);
 
+                if(totalPrice == 0.0){
+                    // custom dialog
+                    final Dialog dialog = new Dialog(context);
+                    dialog.setContentView(R.layout.cutom_alert);
+                     Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
+                    // if button is clicked, close the custom dialog
+                    dialogButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                            Intent intent = new Intent(CartActivity.this,HomeActivity.class);
+                            startActivity(intent);
+                        }
+                    });
+                    dialog.show();
+                }else {
+                    Intent intent = new Intent(CartActivity.this, CheckoutActivity.class);
+                    intent.putExtra("totalPrice", totalPrice + "");
+                    intent.putExtra("products", products );
+                    intent.putExtra("price", price);
+                    startActivity(intent);
+                }
             }
         });
     }
@@ -64,6 +108,7 @@ public class CartActivity extends AppCompatActivity {
         super.onStart();
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
         Log.e(TAG,Prevalent.currentOnlineUser.getEmail());
+
         FirebaseRecyclerOptions<Cart> options = new FirebaseRecyclerOptions.Builder<Cart>()
                 .setQuery(cartListRef.child("User View")
                         .child(Prevalent.currentOnlineUser.getEmail())
@@ -72,11 +117,15 @@ public class CartActivity extends AppCompatActivity {
         FirebaseRecyclerAdapter<Cart, CartViewHolder> adapter = new FirebaseRecyclerAdapter<Cart, CartViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull final Cart model) {
+
                 holder.txtPName.setText(model.getPname());
                 holder.txtPPrice.setText("Price = " + model.getPrice() + "$");
                 holder.txtPQuantity.setText("Quantity = " + model.getQuantity());
                 Double singleProductPrice = ((Double.parseDouble(model.getPrice()))*Double.parseDouble(model.getQuantity()));
+                Picasso.get().load(model.getImage()).into(holder.imageView);
                 totalPrice = totalPrice+singleProductPrice;
+                products = products+"_"+model.getPname();
+                price = price+"_"+(model.getPrice()+"*"+model.getQuantity());
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
