@@ -101,6 +101,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         cartMap.put("date",saveCurrentDate);
         cartMap.put("time",saveCurrentTime);
         cartMap.put("quantity",minteger+"");
+        cartMap.put("image",imagePath);
         cartMap.put("discount","");
         cartListRef.child("User View").child(Prevalent.currentOnlineUser.getEmail())
                 .child("Products").child(productID).updateChildren(cartMap)
@@ -116,6 +117,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 });
 
     }
+    String imagePath;
     private void getProductDetails(String productID) {
         DatabaseReference productRef = FirebaseDatabase.getInstance().getReference().child("Products");
         productRef.child(productID).addValueEventListener(new ValueEventListener() {
@@ -126,7 +128,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
                     productName.setText(products.getPname());
                     productPrice.setText(products.getPrice());
                     productDesc.setText(products.getDescription());
-
+                    imagePath = products.getImage();
                     Picasso.get().load(products.getImage()).into(productImage);
 
 

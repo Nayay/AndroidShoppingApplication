@@ -18,9 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.adb.group12w2019mad3125.Model.Products;
-import com.adb.group12w2019mad3125.Prevalent.Prevalent;
 import com.adb.group12w2019mad3125.ViewHolder.ProductViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -166,6 +164,7 @@ public class HomeActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_categories) {
+
 
         } else if (id == R.id.nav_settings) {
 

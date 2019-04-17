@@ -3,16 +3,19 @@ package com.adb.group12w2019mad3125.Model;
 public class Orders {
 
     private String name,phone,address,totalAmount,cardNumber;
+    private  String products,price;
 
-    public Orders(String name, String phone, String address, String totalAmount, String cardNumber) {
+    public Orders() {
+    }
+
+    public Orders(String name, String phone, String address, String totalAmount, String cardNumber, String products, String price) {
         this.name = name;
         this.phone = phone;
         this.address = address;
         this.totalAmount = totalAmount;
         this.cardNumber = cardNumber;
-    }
-
-    public Orders() {
+        this.products = products;
+        this.price = price;
     }
 
     public String getName() {
@@ -53,5 +56,21 @@ public class Orders {
 
     public void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
+    }
+
+    public String getProducts() {
+        return products;
+    }
+
+    public void setProducts(String products) {
+        this.products = products;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 }
