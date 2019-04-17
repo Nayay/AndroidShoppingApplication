@@ -41,9 +41,9 @@
                 android:layout_below="@+id/product_image"
                 android:text="Product Price"
                 android:textAlignment="center"
-                android:textSize="18dp"
-                android:textColor="@color/colorPrimaryDark"
-                />
+                android:textSize="18dp"/>
+                <!--android:textColor="@color/colorPrimaryDark"-->
+                <!--/>-->
 
             <TextView
                 android:id="@+id/product_description"
@@ -53,9 +53,9 @@
                 android:text="Product Description"
                 android:layout_marginTop="2dp"
                 android:textAlignment="center"
-                android:textSize="16dp"
-                android:textColor="@color/colorPrimaryDark"
-                />
+                android:textSize="16dp" />
+                <!--android:textColor="@color/colorPrimaryDark"-->
+
 
         </RelativeLayout>
 

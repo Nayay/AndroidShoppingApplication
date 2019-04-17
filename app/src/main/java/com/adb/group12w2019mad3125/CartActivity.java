@@ -107,7 +107,7 @@ public class CartActivity extends AppCompatActivity {
     protected void onStart(){
         super.onStart();
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
-        Log.e(TAG,Prevalent.currentOnlineUser.getEmail());
+     //   Log.e(TAG,Prevalent.currentOnlineUser.getEmail());
 
         FirebaseRecyclerOptions<Cart> options = new FirebaseRecyclerOptions.Builder<Cart>()
                 .setQuery(cartListRef.child("User View")

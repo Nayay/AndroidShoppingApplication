@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Order Details"
+        android:textColor="@color/colorPrimary"
         android:textAlignment="center"
         android:textSize="24sp" />
 

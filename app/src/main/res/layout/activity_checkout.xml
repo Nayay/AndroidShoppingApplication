@@ -18,33 +18,49 @@
         android:layout_marginEnd="8dp"
         android:text="Checkout Details"
         android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="User Details"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txtCheckoutEmail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtHeading"
+        app:layout_constraintVertical_chainStyle="spread_inside" />
+
+    <TextView
         android:id="@+id/txtCheckoutEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:padding="10dp"
         android:text="Email :"
+        android:textColor="@android:color/background_dark"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtHeading" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <EditText
         android:id="@+id/checkoutPhone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+
         android:layout_marginEnd="8dp"
         android:hint="Enter Phone Number"
         android:padding="10dp"
@@ -151,7 +167,10 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:padding="10dp"
+        android:background="@color/colorPrimary"
         android:text="Checkout"
+        android:textColor="@color/colorText"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtCvv" />
@@ -163,7 +182,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
         android:text="Card Details"
+        android:textColor="@color/colorPrimary"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkoutAddress" />
 

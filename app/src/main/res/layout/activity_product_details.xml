@@ -14,7 +14,9 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:text="Product Details"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -42,6 +44,7 @@
         android:text="Product Name"
         android:textAlignment="center"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageProduct" />
@@ -82,7 +85,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="96dp"
         android:layout_marginTop="16dp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/colorText"
         android:text="-"
+
+        android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPDesc" />
@@ -108,8 +116,8 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="96dp"
         android:text="+"
-
-
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/colorText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPDesc" />
 
