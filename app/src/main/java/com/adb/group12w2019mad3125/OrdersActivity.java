@@ -48,11 +48,11 @@ public class OrdersActivity extends AppCompatActivity   {
             protected void onBindViewHolder(@NonNull orderViewHolder holder, int position,Orders model) {
 
 
-            holder.userName.setText("User Name: "+ model.getName());
+            holder.userName.setText("User: "+ model.getName());
             holder.phone.setText("Phone Number: "+model.getPhone());
             holder.price.setText("Total Price: "+model.getTotalAmount()+"$");
             holder.address.setText(model.getAddress());
-            holder.cardName.setText("card Name: "+model.getCardNumber());
+            holder.cardName.setText("Card Number: "+model.getCardNumber());
             holder.prices.setText(model.getPrice().replaceAll("_"," "));
             holder.products.setText(model.getProducts().replaceAll("_"," "));
 

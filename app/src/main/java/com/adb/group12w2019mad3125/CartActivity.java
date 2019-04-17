@@ -11,7 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -75,13 +74,17 @@ public class CartActivity extends AppCompatActivity {
                         Intent intentSettings = new Intent(CartActivity.this,SettingsActivity.class);
                         startActivity(intentSettings);
                         return true;
+                    case R.id.action_orders:
+                        Intent intentorders = new Intent(CartActivity.this,OrdersActivity.class);
+                        startActivity(intentorders);
+                        return true;
                 }
                 return false;
             }
         });
 
 
-        Toast.makeText(this,totalPrice+"",Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(this,totalPrice+"",Toast.LENGTH_SHORT).show();
 //        if(totalPrice == 0.0){
 //            // custom dialog
 //            final Dialog dialog = new Dialog(context);
@@ -146,9 +149,9 @@ public class CartActivity extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull final Cart model) {
 
                 holder.txtPName.setText(model.getPname());
-                holder.txtPPrice.setText("Price = " + model.getPrice() + "$");
+                holder.txtPPrice.setText("Price = " + model.getPrice());
                 holder.txtPQuantity.setText("Quantity = " + model.getQuantity());
-                Double singleProductPrice = ((Double.parseDouble(model.getPrice()))*Double.parseDouble(model.getQuantity()));
+                Double singleProductPrice = ((Double.parseDouble(model.getPrice().replace("$","")))*Double.parseDouble(model.getQuantity()));
                 Picasso.get().load(model.getImage()).into(holder.imageView);
                 totalPrice = totalPrice+singleProductPrice;
                 products = products+"_"+model.getPname();

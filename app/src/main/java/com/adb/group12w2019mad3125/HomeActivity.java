@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.adb.group12w2019mad3125.Model.Products;
+import com.adb.group12w2019mad3125.Prevalent.Prevalent;
 import com.adb.group12w2019mad3125.ViewHolder.ProductViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -65,7 +66,7 @@ public class HomeActivity extends AppCompatActivity
         View headerView = navigationView.getHeaderView(0);
         TextView userTextView = headerView.findViewById(R.id.idProfileEmail);
 
-        //userTextView.setText(Prevalent.currentOnlineUser.getEmail());
+        userTextView.setText("Welcome "+Prevalent.currentOnlineUser.getEmail().replace(",","."));
 
         recyclerView = findViewById(R.id.rc_Menu);
         recyclerView.setHasFixedSize(true);
@@ -166,12 +167,14 @@ public class HomeActivity extends AppCompatActivity
             Intent intent = new Intent(this,OrdersActivity.class);
             startActivity(intent);
 
-        } else if (id == R.id.nav_categories) {
-
-
         } else if (id == R.id.nav_settings) {
 
             Intent intent = new Intent(this,SettingsActivity.class);
+            startActivity(intent);
+
+        } else if (id == R.id.nav_contact) {
+
+            Intent intent = new Intent(this,ContactUs.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_logout) {

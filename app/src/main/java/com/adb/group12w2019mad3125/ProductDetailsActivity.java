@@ -104,6 +104,10 @@ public class ProductDetailsActivity extends AppCompatActivity {
                         Intent intentSettings = new Intent(ProductDetailsActivity.this,SettingsActivity.class);
                         startActivity(intentSettings);
                         return true;
+                    case R.id.action_orders:
+                        Intent intentOrders = new Intent(ProductDetailsActivity.this,OrdersActivity.class);
+                        startActivity(intentOrders);
+                        return true;
                 }
                 return false;
             }
@@ -155,7 +159,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 if (dataSnapshot.exists()) {
                     Products products = dataSnapshot.getValue(Products.class);
                     productName.setText(products.getPname());
-                    productPrice.setText(products.getPrice());
+                    productPrice.setText(products.getPrice()+"$");
                     productDesc.setText(products.getDescription());
                     imagePath = products.getImage();
                     Picasso.get().load(products.getImage()).into(productImage);

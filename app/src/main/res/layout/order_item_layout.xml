@@ -20,7 +20,7 @@
             android:text="User Name"
             android:textAlignment="center"
             android:textColor="@color/colorText"
-            android:textSize="20dp"
+            android:textSize="18sp"
             android:textStyle="bold"
 
             />
@@ -44,7 +44,8 @@
             android:text="Products"
             android:textAlignment="center"
             android:textColor="@color/colorText"
-            android:textSize="18dp" />
+            android:textSize="18dp"
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/PriceQuantityOrder"
             android:layout_width="match_parent"
@@ -66,6 +67,7 @@
             android:textAlignment="center"
             android:textColor="@color/colorText"
             android:textSize="16dp" />
+
         <TextView
             android:id="@+id/AddressTitle"
             android:layout_width="match_parent"
@@ -75,7 +77,8 @@
             android:text="Address"
             android:textAlignment="center"
             android:textColor="@color/colorText"
-            android:textSize="16dp" />
+            android:textSize="18dp"
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/AddressOrder"
             android:layout_width="match_parent"
