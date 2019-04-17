@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -39,6 +41,7 @@ public class CartActivity extends AppCompatActivity {
     private Double totalPrice = 0.0;
     private String products = "";
     private String price = "";
+    BottomNavigationView navigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,30 @@ public class CartActivity extends AppCompatActivity {
         txtPrice = findViewById(R.id.txtPrice);
 
         txtPrice.setText("Total Price = "+totalPrice+"$");
+
+        navigation = findViewById(R.id.navigation_view);
+
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.action_home:
+                        Intent intent = new Intent(CartActivity.this,HomeActivity.class);
+                        startActivity(intent);
+                        return true;
+                    case R.id.action_cart:
+                        Intent intentCart = new Intent(CartActivity.this,CartActivity.class);
+                        startActivity(intentCart);
+                        return true;
+                    case R.id.action_settings:
+                        Intent intentSettings = new Intent(CartActivity.this,SettingsActivity.class);
+                        startActivity(intentSettings);
+                        return true;
+                }
+                return false;
+            }
+        });
+
 
         Toast.makeText(this,totalPrice+"",Toast.LENGTH_SHORT).show();
 //        if(totalPrice == 0.0){
