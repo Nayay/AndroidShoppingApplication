@@ -1,5 +1,6 @@
 package com.adb.group12w2019mad3125;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,12 +17,14 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.theartofdev.edmodo.cropper.CropImage;
 
 
 public class OrdersActivity extends AppCompatActivity   {
 
     private RecyclerView orderView;
     private DatabaseReference orderRef;
+    private TextView  homeTextBtn, logoutTextButton;
 
 
     @Override
@@ -34,6 +37,31 @@ public class OrdersActivity extends AppCompatActivity   {
         orderView = findViewById(R.id.rcOrderView);
         orderView.setHasFixedSize(true);
         orderView.setLayoutManager(new LinearLayoutManager(this));
+        homeTextBtn = findViewById(R.id.home_settings_btn);
+        logoutTextButton = findViewById(R.id.logout_account_settings_btn);
+
+
+
+        homeTextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(OrdersActivity.this,HomeActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+
+        logoutTextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(OrdersActivity.this,LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
     @Override
     protected void onStart() {
@@ -52,11 +80,14 @@ public class OrdersActivity extends AppCompatActivity   {
             holder.phone.setText("Phone Number: "+model.getPhone());
             holder.price.setText("Total Price: "+model.getTotalAmount()+"$");
             holder.address.setText(model.getAddress());
-            holder.cardName.setText("Card Number: "+model.getCardNumber());
+            String card = replaceLastDigits(model.getCardNumber());
+            holder.cardName.setText("Card Number: "+card);
             holder.prices.setText(model.getPrice().replaceAll("_"," "));
             holder.products.setText(model.getProducts().replaceAll("_"," "));
 
+
             }
+
             @NonNull
             @Override
             public orderViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -68,7 +99,12 @@ public class OrdersActivity extends AppCompatActivity   {
         orderView.setAdapter(adapter);
         adapter.startListening();
     }
-
+    public static String replaceLastDigits(String s) {
+        int length = s.length();
+        //Check whether or not the string contains at least four characters; if not, this method is useless
+        if (length < 4) return "Error: The provided string is not greater than four characters long.";
+        return s.substring(0, length - 11) + "************";
+    }
     public  static class orderViewHolder extends RecyclerView.ViewHolder{
         public TextView userName,phone,price,address,cardName,products,prices;
 
