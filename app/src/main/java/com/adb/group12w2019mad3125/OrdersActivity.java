@@ -39,12 +39,8 @@ public class OrdersActivity extends AppCompatActivity   {
         super.onStart();
 
         FirebaseRecyclerOptions<Orders> options = new FirebaseRecyclerOptions.Builder<Orders>()
-                .setQuery(orderRef,Orders.class).build();
+                .setQuery(orderRef.child(Prevalent.currentOnlineUser.getEmail()).child("Order"),Orders.class).build();
 
-//        FirebaseRecyclerOptions<Cart> options = new FirebaseRecyclerOptions.Builder<Cart>()
-//                .setQuery(cartListRef.child("User View")
-//                        .child(Prevalent.currentOnlineUser.getEmail())
-//                        .child("Products"), Cart.class).build();
         FirebaseRecyclerAdapter<Orders,orderViewHolder> adapter = new FirebaseRecyclerAdapter<Orders, orderViewHolder>(options) {
 
             @Override

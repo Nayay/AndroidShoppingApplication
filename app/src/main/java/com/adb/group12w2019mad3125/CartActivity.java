@@ -62,9 +62,8 @@ public class CartActivity extends AppCompatActivity {
     @Override
     protected void onStart(){
         super.onStart();
-
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
-        //Log.e(TAG,Prevalent.currentOnlineUser.getEmail());
+        Log.e(TAG,Prevalent.currentOnlineUser.getEmail());
         FirebaseRecyclerOptions<Cart> options = new FirebaseRecyclerOptions.Builder<Cart>()
                 .setQuery(cartListRef.child("User View")
                         .child(Prevalent.currentOnlineUser.getEmail())
@@ -76,10 +75,8 @@ public class CartActivity extends AppCompatActivity {
                 holder.txtPName.setText(model.getPname());
                 holder.txtPPrice.setText("Price = " + model.getPrice() + "$");
                 holder.txtPQuantity.setText("Quantity = " + model.getQuantity());
-
                 Double singleProductPrice = ((Double.parseDouble(model.getPrice()))*Double.parseDouble(model.getQuantity()));
                 totalPrice = totalPrice+singleProductPrice;
-
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

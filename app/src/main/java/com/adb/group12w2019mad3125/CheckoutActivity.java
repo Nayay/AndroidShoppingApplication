@@ -23,14 +23,15 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 
+import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Random;
 
 public class CheckoutActivity extends AppCompatActivity {
     private EditText fullNameEditText, userPhoneEditText, addressEditText;
-    private TextView txtEmail,txtPrice;
-
+    private TextView txtEmail;
     private Button btnCheckout;
 
 
@@ -51,18 +52,14 @@ public class CheckoutActivity extends AppCompatActivity {
         btnCheckout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-           //     txtPrice.setText(getIntent().getStringExtra("totalPrice"));
-
-                check();
+            checkOrderDetails();
             }
-
-
         });
        //
 
 
     }
-    private void check() {
+    private void checkOrderDetails() {
 
         if(fullNameEditText.getText().toString().isEmpty()||userPhoneEditText.getText().toString().isEmpty()||addressEditText.getText().toString().isEmpty()){
             Toast.makeText(CheckoutActivity.this,"Required fields cannot be left empty",Toast.LENGTH_SHORT).show();
@@ -80,8 +77,9 @@ public class CheckoutActivity extends AppCompatActivity {
         saveCurrentDate = currentDate.format(calendar.getTime());
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
         saveCurrentTime = currentTime.format(calendar.getTime());
-        final  DatabaseReference orderRef = FirebaseDatabase.getInstance().getReference().child("Orders")
-                .child(Prevalent.currentOnlineUser.getEmail());
+        DatabaseReference orderRef = FirebaseDatabase.getInstance().getReference().child("Orders");
+
+               // .child(Prevalent.currentOnlineUser.getEmail());
         HashMap<String,Object> orderMap = new HashMap<>();
         orderMap.put("totalAmount",getIntent().getStringExtra("totalPrice"));
         orderMap.put("name",fullNameEditText.getText().toString());
@@ -95,7 +93,23 @@ public class CheckoutActivity extends AppCompatActivity {
         orderMap.put("cvv","123");
         orderMap.put("expiryDate","10/07/2019");
 
-        orderRef.updateChildren(orderMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+//        orderRef.child("User View").child(Prevalent.currentOnlineUser.getEmail())
+//                .child("Orders").child(currentTime.toString()).updateChildren(orderMap)
+//                .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                                           @Override
+//                                           public void onComplete(@NonNull Task<Void> task) {
+//                                               if(task.isSuccessful()){
+//                                                   Toast.makeText(CheckoutActivity.this,"Your final order has been paced successfully",Toast.LENGTH_SHORT).show();
+//                                                   Intent intent = new Intent(CheckoutActivity.this,OrdersActivity.class);
+//                                                 //  intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                                                   startActivity(intent);
+//                                                   finish();
+//                                               }
+//                                           }
+//                                       });
+
+
+        orderRef.child(Prevalent.currentOnlineUser.getEmail().replace(".",",")).child("Order").child(getAlphaNumericString(10)).updateChildren(orderMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
@@ -118,6 +132,32 @@ public class CheckoutActivity extends AppCompatActivity {
             }
         });
 
+    }
+    public  String getAlphaNumericString(int n)
+    {
+
+        // chose a Character random from this String
+        String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                + "0123456789"
+                + "abcdefghijklmnopqrstuvxyz";
+
+        // create StringBuffer size of AlphaNumericString
+        StringBuilder sb = new StringBuilder(n);
+
+        for (int i = 0; i < n; i++) {
+
+            // generate a random number between
+            // 0 to AlphaNumericString variable length
+            int index
+                    = (int)(AlphaNumericString.length()
+                    * Math.random());
+
+            // add Character one by one in end of sb
+            sb.append(AlphaNumericString
+                    .charAt(index));
+        }
+
+        return sb.toString();
     }
 
     private void userInfoDisplay( final EditText fullNameEditText, final EditText userPhoneEditText, final EditText addressEditText) {

@@ -99,11 +99,14 @@ public class LoginActivity extends AppCompatActivity {
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Required fields cannot be empty", Toast.LENGTH_LONG).show();
         } else {
+
             loadingBar.setTitle("Login Account");
             loadingBar.setMessage("Please wait, while we are checking the credentials.");
             loadingBar.setCanceledOnTouchOutside(false);
             loadingBar.show();
+
             checkLogin(email, password);
+
 
         }
 
@@ -122,8 +125,8 @@ public class LoginActivity extends AppCompatActivity {
                         Users userData = dataSnapshot.child(parentDBName).child(email).getValue(Users.class);
                         if (userData.getEmail().equals(email)) {
                             if (userData.getPassword().equals(password)) {
-                                Toast.makeText(LoginActivity.this, "Logged in successfully", Toast.LENGTH_LONG).show();
-                                loadingBar.dismiss();
+
+
                                 //Rem me is on
                                 if(rememberMe.isChecked()){
                                     mEditor.putString("email",edtEmail.getText().toString());
@@ -133,9 +136,10 @@ public class LoginActivity extends AppCompatActivity {
                                 else {
                                     mEditor.clear().apply();
                                 }
-
                                 Prevalent.currentOnlineUser = userData;
-
+                               // Prevalent.UserEmailKey = userData.getEmail().replace(".",",");
+                                Toast.makeText(LoginActivity.this, "Logged in successfully", Toast.LENGTH_LONG).show();
+                                loadingBar.dismiss();
                                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                                 startActivity(intent);
                             } else {
