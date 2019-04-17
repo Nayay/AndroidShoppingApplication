@@ -50,8 +50,11 @@ public class OrdersActivity extends AppCompatActivity   {
             holder.userName.setText("User Name: "+ model.getName());
             holder.phone.setText("Phone Number: "+model.getPhone());
             holder.price.setText("Total Price: "+model.getTotalAmount()+"$");
-            holder.address.setText("Address: "+model.getAddress());
+            holder.address.setText(model.getAddress());
             holder.cardName.setText("card Name: "+model.getCardNumber());
+            holder.prices.setText(model.getPrice().replaceAll("_"," "));
+            holder.products.setText(model.getProducts().replaceAll("_"," "));
+
             }
             @NonNull
             @Override
@@ -66,7 +69,7 @@ public class OrdersActivity extends AppCompatActivity   {
     }
 
     public  static class orderViewHolder extends RecyclerView.ViewHolder{
-        public TextView userName,phone,price,address,cardName;
+        public TextView userName,phone,price,address,cardName,products,prices;
 
         public orderViewHolder(@NonNull View itemView)
         {
@@ -76,6 +79,8 @@ public class OrdersActivity extends AppCompatActivity   {
             price = itemView.findViewById(R.id.totalPriceOrder);
             address = itemView.findViewById(R.id.AddressOrder);
             cardName = itemView.findViewById(R.id.CardNameOrder);
+            products = itemView.findViewById(R.id.productsOrders);
+            prices = itemView.findViewById(R.id.PriceQuantityOrder);
         }
     }
 
