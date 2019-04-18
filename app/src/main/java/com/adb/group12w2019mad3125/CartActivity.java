@@ -40,6 +40,8 @@ public class CartActivity extends AppCompatActivity {
     private Double totalPrice = 0.0;
     private String products = "";
     private String price = "";
+    private String quantity="";
+    private String images="";
     BottomNavigationView navigation;
 
     @Override
@@ -127,6 +129,8 @@ public class CartActivity extends AppCompatActivity {
                     intent.putExtra("totalPrice", totalPrice + "");
                     intent.putExtra("products", products );
                     intent.putExtra("price", price);
+                    intent.putExtra("qunatity", quantity);
+                    intent.putExtra("images", images);
                     startActivity(intent);
                 }
             }
@@ -155,7 +159,11 @@ public class CartActivity extends AppCompatActivity {
                 Picasso.get().load(model.getImage()).into(holder.imageView);
                 totalPrice = totalPrice+singleProductPrice;
                 products = products+"_"+model.getPname();
-                price = price+"_"+(model.getPrice()+"*"+model.getQuantity());
+                price = price+"_"+(model.getPrice());
+                quantity = quantity +"_"+(model.getQuantity());
+                images = images +"~~~~"+(model.getImage());
+
+
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

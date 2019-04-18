@@ -41,7 +41,7 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterView.O
     EditText date;
     DatePickerDialog datePickerDialog;
     String[] cardName={"Visa","Master"};
-
+    private String orderId="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,6 +113,7 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterView.O
     }
 
     private void confirmOrder() {
+        orderId = getAlphaNumericString(10);
         final String saveCurrentDate,saveCurrentTime;
 
         Calendar calendar = Calendar.getInstance();
@@ -136,6 +137,9 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterView.O
         orderMap.put("expiryDate",date.getText().toString());
         orderMap.put("products",getIntent().getStringExtra("products"));
         orderMap.put("price",getIntent().getStringExtra("price"));
+        orderMap.put("quantity",getIntent().getStringExtra("qunatity"));
+        orderMap.put("images",getIntent().getStringExtra("images"));
+        orderMap.put("orderId",orderId);
 
 
 //        orderRef.child("User View").child(Prevalent.currentOnlineUser.getEmail())
@@ -154,7 +158,7 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterView.O
 //                                       });
 
 
-        orderRef.child(Prevalent.currentOnlineUser.getEmail().replace(".",",")).child("Order").child(getAlphaNumericString(10)).updateChildren(orderMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+        orderRef.child(Prevalent.currentOnlineUser.getEmail().replace(".",",")).child("Order").child(orderId).updateChildren(orderMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
