@@ -30,7 +30,7 @@ import java.util.ArrayList;
 
 public class OrderDetails extends AppCompatActivity {
 
-    private static final String TAG = "%%%%%%";
+
     private TextView txtOrderID,txtUserName;
     private String orderID;
     private String[] pNameArray,pPriceArray,pQunatityArray;
@@ -48,7 +48,7 @@ public class OrderDetails extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                Intent intent = new Intent(OrderDetails.this,HomeActivity.class);
+                Intent intent = new Intent(OrderDetails.this,OrdersActivity.class);
                 startActivity(intent);
             }
         });

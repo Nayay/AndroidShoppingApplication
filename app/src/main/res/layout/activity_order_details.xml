@@ -25,7 +25,7 @@
                     android:id="@+id/home_settings_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Home"
+                    android:text="Back"
                     android:textColor="@android:color/white"
                     android:textSize="17sp"
                     android:textStyle="bold"
