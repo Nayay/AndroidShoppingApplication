@@ -47,9 +47,19 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout);
-     //   Toast.makeText(this,getIntent().getStringExtra("products"),Toast.LENGTH_SHORT).show();
+        //   Toast.makeText(this,getIntent().getStringExtra("products"),Toast.LENGTH_SHORT).show();
         // initiate the date picker and a button
         date = findViewById(R.id.txtCardDate);
+
+        TextView cancelTextButton = findViewById(R.id.cancel_btn);
+        cancelTextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(CheckoutActivity.this,HomeActivity.class);
+                startActivity(intent);
+            }
+        });
         // perform click event on edit text
         date.setOnClickListener(new View.OnClickListener() {
             @Override
