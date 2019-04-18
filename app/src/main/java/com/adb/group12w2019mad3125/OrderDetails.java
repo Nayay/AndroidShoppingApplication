@@ -6,10 +6,14 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.adb.group12w2019mad3125.Model.Details;
 import com.adb.group12w2019mad3125.Model.Orders;
@@ -25,35 +29,29 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class OrderDetails extends AppCompatActivity {
-    private TextView homeTextBtn, logoutTextButton,txtOrderID,txtUserName;
-    private String orderID;
-    private ArrayList<Details> orderDetails;
 
+    private static final String TAG = "%%%%%%";
+    private TextView txtOrderID,txtUserName;
+    private String orderID;
+    private String[] pNameArray,pPriceArray,pQunatityArray;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        orderID = getIntent().getStringExtra("oid");
         super.onCreate(savedInstanceState);
-        orderDetails =new  ArrayList<Details>();
         setContentView(R.layout.activity_order_details);
-        homeTextBtn = findViewById(R.id.home_settings_btn);
-        logoutTextButton = findViewById(R.id.logout_account_settings_btn);
-        getOrderDetails(orderID);
 
+        orderID = getIntent().getStringExtra("oid");
 
-
+        TextView homeTextBtn = findViewById(R.id.home_settings_btn);
+        TextView logoutTextButton = findViewById(R.id.logout_account_settings_btn);
         homeTextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
             {
                 Intent intent = new Intent(OrderDetails.this,HomeActivity.class);
                 startActivity(intent);
-
-
-
             }
         });
-
 
         logoutTextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,12 +65,13 @@ public class OrderDetails extends AppCompatActivity {
 
         txtOrderID = findViewById(R.id.txtDetailsOrderID);
         txtUserName = findViewById(R.id.txtDetailsName);
+        getOrderDetails(orderID);
 
 
-    }
+     }
 
     private void getOrderDetails(final String orderID) {
-        DatabaseReference orderRef = FirebaseDatabase.getInstance().getReference().child("  ").child(Prevalent.currentOnlineUser.getEmail()).child("Order");
+        DatabaseReference orderRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(Prevalent.currentOnlineUser.getEmail()).child("Order");
         orderRef.child(orderID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -80,20 +79,22 @@ public class OrderDetails extends AppCompatActivity {
                     Orders orders = dataSnapshot.getValue(Orders.class);
                     txtOrderID.setText("Order Id: "+orders.getOrderId());
                     txtUserName.setText("User: " +orders.getName());
+                    pNameArray = getData(orders.getProducts());
+                    pPriceArray = getData(orders.getPrice());
+                    pQunatityArray = getData((orders.getQuantity()));
 
+                    ArrayAdapter<String> nameAdapter = new ArrayAdapter<String>(OrderDetails.this, android.R.layout.test_list_item,pNameArray);
+                    ListView listViewName =  findViewById(R.id.detailPname);
 
+                    listViewName.setAdapter(nameAdapter);
+                    ArrayAdapter<String> priceAdapter = new ArrayAdapter<String>(OrderDetails.this, android.R.layout.test_list_item,pPriceArray);
+                    ListView listViewPrice = findViewById(R.id.detailPrice);
+                    listViewPrice.setAdapter(priceAdapter);
+                    ArrayAdapter<String> quantityAdapter = new ArrayAdapter<String>(OrderDetails.this, android.R.layout.test_list_item,pQunatityArray);
+                    ListView listViewQuantity = findViewById(R.id.detailQuantity);
+                    listViewQuantity.setAdapter(quantityAdapter);
 
-
-
-//                   pnames = orders.getProducts();
-//                    prices  = orders.getPrice();
-//                    quantitya = orders.getQuantity();
-
-
-                    //Picasso.get().load(products.getImage()).into(productImage);
-
-
-                }
+                  }
 
             }
 
@@ -104,18 +105,8 @@ public class OrderDetails extends AppCompatActivity {
         });
     }
 
-    public  String[]  getImages(String images) {
 
-        /* String to split. */
-        String stringToSplit = images;
-        String[] tempArray;
-        /* delimiter */
-        String delimiter = "~~~~";
-        /* given string will be split by the argument delimiter provided. */
-        tempArray = stringToSplit.split(delimiter);
-        return tempArray;
-    }
-    public  String[]  getPName(String name) {
+    public  String[]  getData(String name) {
 
         /* String to split. */
         String stringToSplit = name;
@@ -126,5 +117,6 @@ public class OrderDetails extends AppCompatActivity {
         tempArray = stringToSplit.split(delimiter);
         return tempArray;
     }
+
 
 }
