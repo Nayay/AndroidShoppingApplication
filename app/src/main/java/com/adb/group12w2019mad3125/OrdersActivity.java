@@ -17,7 +17,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.theartofdev.edmodo.cropper.CropImage;
+
 
 
 public class OrdersActivity extends AppCompatActivity   {
@@ -73,7 +73,7 @@ public class OrdersActivity extends AppCompatActivity   {
         FirebaseRecyclerAdapter<Orders,orderViewHolder> adapter = new FirebaseRecyclerAdapter<Orders, orderViewHolder>(options) {
 
             @Override
-            protected void onBindViewHolder(@NonNull orderViewHolder holder, int position,Orders model) {
+            protected void onBindViewHolder(@NonNull orderViewHolder holder, int position, final Orders model) {
 
 
             holder.userName.setText("User: "+ model.getName());
@@ -84,6 +84,15 @@ public class OrdersActivity extends AppCompatActivity   {
             holder.cardName.setText("Card Number: "+card);
             holder.prices.setText(model.getPrice().replaceAll("_"," "));
             holder.products.setText(model.getProducts().replaceAll("_"," "));
+
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(OrdersActivity.this, OrderDetails.class);
+                        intent.putExtra("oid",model.getOrderId());
+                       startActivity(intent);
+                   }
+                });
 
 
             }
