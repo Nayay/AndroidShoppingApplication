@@ -21,6 +21,28 @@ public class ContactUs extends AppCompatActivity {
                 Intent intent =new Intent(Intent.ACTION_DIAL);
                 intent.setData(Uri.parse("tel:+16478075105"));
                 startActivity(intent);
+
+            }
+        });
+
+        TextView homeTextBtn = findViewById(R.id.home_settings_btn);
+        TextView logoutTextButton = findViewById(R.id.logout_account_settings_btn);
+        homeTextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(ContactUs.this,OrdersActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        logoutTextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(ContactUs.this,LoginActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

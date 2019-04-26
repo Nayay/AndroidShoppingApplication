@@ -164,6 +164,7 @@ public class CartActivity extends AppCompatActivity {
                 images = images +"~~~~"+(model.getImage());
 
 
+
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -201,6 +202,7 @@ public class CartActivity extends AppCompatActivity {
                         builder.show();
                     }
                 });
+                txtPrice.setText("Total Price = "+totalPrice+"$");
 
             }
             @NonNull
