@@ -17,8 +17,12 @@ Shopping Application Build on Firebase
 ## Authors
 
 * **Nayayjeet Sharma** - *Initial work* - [Nayay](https://github.com/Nayay)
-* **Prabhjot Kaur* - *Initial work* - [Prabhjot](https://github.com/Prabhjot143)
+* *Prabhjot Kaur* - *Initial work* - [Prabhjot](https://github.com/Prabhjot143)
+* *Sandeep Dhillon* - *Initial work* - [Sandeep](https://github.com/ssd2192)
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Screenshot
+
