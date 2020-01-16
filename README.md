@@ -21,15 +21,21 @@ Fork the project and import it in Android Studio.
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Screenshot
-![](Screenshot/Screenshot_20190630-022150_Group12W2019Mad3125.jpg) ![](Screenshot/Screenshot_20190630-022156_Group12W2019Mad3125.jpg) ![](Screenshot/Screenshot_20190630-022212_Group12W2019Mad3125.jpg) 
-![](Screenshot/Screenshot_20190630-022758_Group12W2019Mad3125.jpg) 
-![](Screenshot/Screenshot_20190630-022156_Group12W2019Mad3125.jpg) 
-![](Screenshot/Screenshot_20190630-022150_Group12W2019Mad3125.jpg) 
-![](Screenshot/Screenshot_20190630-022156_Group12W2019Mad3125.jpg) 
-![](Screenshot/Screenshot_20190630-022156_Group12W2019Mad3125.jpg) 
-![](Screenshot/Screenshot_20190630-022156_Group12W2019Mad3125.jpg) 
-![](Screenshot/Screenshot_20190630-022156_Group12W2019Mad3125.jpg) 
-![](Screenshot/Screenshot_20190630-022150_Group12W2019Mad3125.jpg) 
-![](Screenshot/Screenshot_20190630-022156_Group12W2019Mad3125.jpg) 
-![](Screenshot/Screenshot_20190630-022156_Group12W2019Mad3125.jpg) 
-![](Screenshot/Screenshot_20190630-022156_Group12W2019Mad3125.jpg) 
+![](Screenshot/Screenshot_20190630-022150_Group12W2019Mad3125.jpg)
+![](Screenshot/Screenshot_20190630-022156_Group12W2019Mad3125.jpg)
+![](Screenshot/Screenshot_20190630-022212_Group12W2019Mad3125.jpg)
+
+![](Screenshot/Screenshot_20190630-022758_Group12W2019Mad3125.jpg)
+![](Screenshot/Screenshot_20190630-022921_Group12W2019Mad3125.jpg) 
+![](Screenshot/Screenshot_20190630-022936_Group12W2019Mad3125.jpg) 
+
+![](Screenshot/Screenshot_20190630-022947_Group12W2019Mad3125.jpg) 
+![](Screenshot/Screenshot_20190630-022952_Group12W2019Mad3125.jpg) 
+![](Screenshot/Screenshot_20190630-023009_Group12W2019Mad3125.jpg)
+
+![](Screenshot/Screenshot_20190630-023048_Group12W2019Mad3125.jpg) 
+![](Screenshot/Screenshot_20190630-023055_Group12W2019Mad3125.jpg) 
+
+![](Screenshot/Screenshot_20190630-022222_Group12W2019Mad3125.jpg) 
+![](Screenshot/Screenshot_20190630-022532_Group12W2019Mad3125.jpg) 
+![](Screenshot/Screenshot_20190630-022537_Group12W2019Mad3125.jpg) 
