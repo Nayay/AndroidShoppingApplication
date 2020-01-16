@@ -18,7 +18,7 @@ Shopping Application Build on Firebase
 
 * **Nayayjeet Sharma** - *Initial work* - [Nayay](https://github.com/Nayay)
 * *Prabhjot Kaur* - *Initial work* - [Prabhjot](https://github.com/Prabhjot143)
-* *Sandeep Dhillon* - *Initial work* - [Sandeep](https://github.com/ssd2192)
+
 
 ## License
 
