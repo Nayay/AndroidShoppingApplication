@@ -22,7 +22,8 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Screenshot
 
-|          |           |          | 
+|![](Screenshot/Screenshot_20190630-022150_Group12W2019Mad3125.jpg)| ![](Screenshot/Screenshot_20190630-022156_Group12W2019Mad3125.jpg) | ![](Screenshot/Screenshot_20190630-022212_Group12W2019Mad3125.jpg) 
+ | 
 | ---      | ---       | ---      |
 | Backtick | `         | Backtick | 
 | Backtick | `         | Backtick | 
@@ -30,10 +31,9 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 | Backtick | `         | Backtick | 
 | Backtick | `         | Backtick | 
 
- ![](Screenshot/Screenshot_20190630-022150_Group12W2019Mad3125.jpg) 
- ![](Screenshot/Screenshot_20190630-022156_Group12W2019Mad3125.jpg) 
- ![](Screenshot/Screenshot_20190630-022212_Group12W2019Mad3125.jpg) 
-
+ 
+ 
+ 
 ![](Screenshot/Screenshot_20190630-022758_Group12W2019Mad3125.jpg)
 ![](Screenshot/Screenshot_20190630-022921_Group12W2019Mad3125.jpg) 
 ![](Screenshot/Screenshot_20190630-022936_Group12W2019Mad3125.jpg) 
