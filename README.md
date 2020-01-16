@@ -22,9 +22,9 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Screenshot
 
-![](Screenshot/Screenshot_20190630-022150_Group12W2019Mad3125.jpg =250x250)
-![](Screenshot/Screenshot_20190630-022156_Group12W2019Mad3125.jpg =250x250) 
-![](Screenshot/Screenshot_20190630-022212_Group12W2019Mad3125.jpg =250x250) 
+![](Screenshot/Screenshot_20190630-022150_Group12W2019Mad3125.jpg  width="200" height="400")
+![](Screenshot/Screenshot_20190630-022156_Group12W2019Mad3125.jpg  width="200" height="400") 
+![](Screenshot/Screenshot_20190630-022212_Group12W2019Mad3125.jpg  width="200" height="400") 
  
 | ---      | ---       | ---      |
 | Backtick | `         | Backtick | 
