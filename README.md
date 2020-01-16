@@ -22,7 +22,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Screenshot
 
-<img src="https://github.com/Nayay/AndroidShoppingApplication/blob/master/Screenshot/Screenshot_20190630-022150_Group12W2019Mad3125.jpg" height="350" width="200"/><img src="https://github.com/Nayay/AndroidShoppingApplication/blob/master/Screenshot/Screenshot_20190630-022156_Group12W2019Mad3125.jpg" height="350" width="200"/><img src="https://github.com/Nayay/AndroidShoppingApplication/blob/master/Screenshot/Screenshot_20190630-022212_Group12W2019Mad3125.jpg" height="350" width="200"/>
+<img src="https://github.com/Nayay/AndroidShoppingApplication/blob/master/Screenshot/Screenshot_20190630-022150_Group12W2019Mad3125.jpg" height="350" width="200"/>&nbsp;<&nbsp;<<img src="https://github.com/Nayay/AndroidShoppingApplication/blob/master/Screenshot/Screenshot_20190630-022156_Group12W2019Mad3125.jpg" height="350" width="200"/>&nbsp;<&nbsp;<<img src="https://github.com/Nayay/AndroidShoppingApplication/blob/master/Screenshot/Screenshot_20190630-022212_Group12W2019Mad3125.jpg" height="350" width="200"/>
 
 <img src="https://github.com/Nayay/AndroidShoppingApplication/blob/master/Screenshot/Screenshot_20190630-022758_Group12W2019Mad3125.jpg" height="350" width="200"/><img src="https://github.com/Nayay/AndroidShoppingApplication/blob/master/Screenshot/Screenshot_20190630-022921_Group12W2019Mad3125.jpg" height="350" width="200"/><img src="https://github.com/Nayay/AndroidShoppingApplication/blob/master/Screenshot/Screenshot_20190630-022936_Group12W2019Mad3125.jpg" height="350" width="200"/>
 
